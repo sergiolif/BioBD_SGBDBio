@@ -318,14 +318,14 @@ LANGUAGE "sql" IMMUTABLE;
 /*
 - Name: getCountProteinTaxonomy 
 - Input: integer - taxonomy_Id 
-- Output: bigint - amount of fiocruzid 
-- Description: get the amount of fiocruzid belonging to a specific taxonomy_Id.
+- Output: bigint - amount of proteinid 
+- Description: get the amount of proteinid belonging to a specific taxonomy_Id.
 */
 
 CREATE OR REPLACE FUNCTION getCountProteinTaxonomy (INTEGER) 
 RETURNS BIGINT AS 
 $$ 
-SELECT COUNT(p.fiocruzid) 
+SELECT COUNT(p.proteinid) 
 FROM protein p 
 WHERE p.taxonomy_id IN 
 (select * from gettaxonomyidchildrenset($1)); 
@@ -343,11 +343,11 @@ CREATE OR REPLACE FUNCTION getCountHitsProtein (NUMERIC, DOUBLE PRECISION)
 RETURNS BIGINT AS 
 $$ 
 SELECT COUNT (*) FROM (
-	 SELECT (hq.query_fiocruzid) FROM hit_pp hq 
-	 WHERE hq.query_fiocruzid = $1 AND hq.e_value <= $2 
+	 SELECT (hq.query_proteinid) FROM hits_pp hq 
+	 WHERE hq.query_proteinid = $1 AND hq.e_value <= $2 
 	 UNION ALL 
-	 SELECT (hq.subject_fiocruzid) FROM hit_pp hq 
-	 WHERE hq.subject_fiocruzid = $1 AND hq.e_value <= $2 
+	 SELECT (hq.subject_proteinid) FROM hits_pp hq 
+	 WHERE hq.subject_proteinid = $1 AND hq.e_value <= $2 
 ) as t; 
 $$ 
 LANGUAGE "sql" IMMUTABLE;
@@ -355,14 +355,14 @@ LANGUAGE "sql" IMMUTABLE;
 /*
 - Name: getProteinTaxonomy 
 - Input: integer - taxonomy_Id 
-- Output: numeric collection - fiocruzid 
-- Description: get the fiocruzid collection belonging to a specific taxonomy_Id.
+- Output: numeric collection - proteinid 
+- Description: get the proteinid collection belonging to a specific taxonomy_Id.
 */
 
 CREATE OR REPLACE FUNCTION getProteinTaxonomy (INTEGER) 
 RETURNS SETOF NUMERIC AS 
 $$ 
-SELECT (p.fiocruzid) FROM protein p 
+SELECT (p.proteinid) FROM protein p 
 WHERE p.taxonomy_id IN 
 (select * from gettaxonomyidchildrenset($1)); 
 $$ 
@@ -371,8 +371,8 @@ LANGUAGE "sql" IMMUTABLE;
 /*
 - Name: getSimilarProtein 
 - Input: integer - taxonomy_Id integer - taxonomy_Id 
-- Output: numeric collection - fiocruzid 
-- Description: get the similar fiocruzid collection belonging to a specific taxonomy_Id compared with other organism.
+- Output: numeric collection - proteinid 
+- Description: get the similar proteinid collection belonging to a specific taxonomy_Id compared with other organism.
 */
 
 CREATE OR REPLACE FUNCTION getSimilarProtein (INTEGER, INTEGER) 
@@ -383,19 +383,19 @@ DECLARE
 	org2 ALIAS FOR $2; 
 BEGIN
 	RETURN QUERY 
-		(SELECT query_fiocruzid FROM hit_pp
-		 WHERE query_fiocruzid IN (
+		(SELECT query_proteinid FROM hits_pp
+		 WHERE query_proteinid IN (
 			  select * from explode_array(ARRAY(select * from 
 			  getproteintaxonomy(org1)))) AND 
-			  subject_fiocruzid IN (select * from 
+			  subject_proteinid IN (select * from 
 			  explode_array(ARRAY(select * from 
 			  getproteintaxonomy(org2))))) 
 		 UNION
-		  (SELECT subject_fiocruzid FROM hit_pp 
-		  WHERE query_fiocruzid IN (
+		  (SELECT subject_proteinid FROM hits_pp 
+		  WHERE query_proteinid IN (
 			   select * from explode_array(ARRAY(select * from 
 			   getproteintaxonomy(org2)))) AND 
-			   subject_fiocruzid IN (select * from 
+			   subject_proteinid IN (select * from 
 			   explode_array(ARRAY(select * from 
 			   getproteintaxonomy(org1))))); 
 END 
@@ -405,7 +405,7 @@ LANGUAGE plpgsql IMMUTABLE RETURNS NULL ON NULL INPUT;
 /*
 - Name: getSingleGene 
 - Input: integer - taxonomy_Id 
-- Output: numeric collection - fiocruzid 
+- Output: numeric collection - proteinid 
 - Description: gets single genes in a taxonomic group.
 */
 
@@ -427,7 +427,7 @@ LANGUAGE plpgsql IMMUTABLE RETURNS NULL ON NULL INPUT;
 /*
 - Name: getOrthologousGene 
 - Input: integer - taxonomy_Id integer - taxonomy_Id 
-- Output: numeric collection - fiocruzid 
+- Output: numeric collection - proteinid 
 - Description: get the orthologous genes to a specific taxonomy_Id.
 */
 
@@ -439,19 +439,19 @@ DECLARE
 	org2 ALIAS FOR $2; 
 BEGIN 
 	RETURN QUERY 
-		(SELECT subject_fiocruzid FROM hit_pp 
-		WHERE query_fiocruzid IN ( 
+		(SELECT subject_proteinid FROM hits_pp 
+		WHERE query_proteinid IN ( 
 			select * from explode_array(ARRAY(select * from 
 			getproteintaxonomy(org1)))) AND 
-			subject_fiocruzid IN (select * from 
+			subject_proteinid IN (select * from 
 			explode_array(ARRAY(select * from 
 			getproteintaxonomy(org2))))) 
 		UNION 
-		(SELECT subject_fiocruzid , query_fiocruzid FROM hit_pp 
-		WHERE query_fiocruzid IN ( 
+		(SELECT subject_proteinid , query_proteinid FROM hits_pp 
+		WHERE query_proteinid IN ( 
 			select * from explode_array(ARRAY(select * from 
 			getproteintaxonomy(org2)))) AND 
-			subject_fiocruzid IN (select * from 
+			subject_proteinid IN (select * from 
 			explode_array(ARRAY(select * from 
 			getproteintaxonomy(org1))))); 
 END 
@@ -461,7 +461,7 @@ LANGUAGE plpgsql IMMUTABLE RETURNS NULL ON NULL INPUT;
 /*
 - Name: getParalogousGene 
  Input: integer - taxonomy_Id 
- - Output: numeric collection - fiocruzid 
+ - Output: numeric collection - proteinid 
  - Description: get the paralogous genes to a specific taxonomy_Id.
 */
 
@@ -472,11 +472,11 @@ DECLARE
 	org ALIAS FOR $1; 
 BEGIN 
 	RETURN QUERY 
-		(SELECT subject_fiocruzid FROM hit_pp 
-		WHERE query_fiocruzid IN (select * from 
+		(SELECT subject_proteinid FROM hits_pp 
+		WHERE query_proteinid IN (select * from 
 		explode_array(ARRAY(select * from 
 		getproteintaxonomy(org)))) AND 
-		subject_fiocruzid IN (select * from 
+		subject_proteinid IN (select * from 
 		explode_array(ARRAY(select * from 
 		getproteintaxonomy(org))))); 
 END 

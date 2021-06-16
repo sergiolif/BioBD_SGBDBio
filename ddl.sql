@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS protein CASCADE;
 
 CREATE TABLE protein
 (
-	fiocruzid numeric(20,0) PRIMARY KEY,
+	proteinid numeric(20,0) PRIMARY KEY,
 	gbkid varchar(15),
 	uniprotid varchar(10),
 	length numeric(5,0),
@@ -38,7 +38,7 @@ DROP TABLE IF EXISTS orf_t CASCADE;
 
 CREATE TABLE orf_t
 (
-	fiocruzid numeric(20,0) PRIMARY KEY,
+	orftid numeric(20,0) PRIMARY KEY,
 	length numeric(5,0),
 	taxonomy_id numeric(10,0),
 
@@ -68,7 +68,7 @@ DROP TABLE IF EXISTS cds CASCADE;
 
 CREATE TABLE cds
 (
-	fiocruzid numeric(10,0),
+	cdsid numeric(10,0),
 	region varchar(255),
 	gbkid varchar(20),
 	geneid numeric(10,0)
@@ -161,11 +161,11 @@ DROP TABLE IF EXISTS goannotation CASCADE;
 CREATE TABLE goannotation
 (
 	gene_ontology_id numeric(8,0),
-	fiocruzid numeric(20,0),
+	goannotationid numeric(20,0),
 	sou_name varchar(20),
 	sou_version varchar(10),
 
-	CONSTRAINT PK_goannotation PRIMARY KEY (gene_ontology_id, fiocruzid),
+	CONSTRAINT PK_goannotation PRIMARY KEY (gene_ontology_id, goannotationid),
 	CONSTRAINT FK_goannotation FOREIGN KEY (gene_ontology_id) REFERENCES gene_ontology(gene_ontology_id)
 );
 
@@ -175,14 +175,14 @@ DROP TABLE IF EXISTS domainannotation CASCADE;
 CREATE TABLE domainannotation
 (
 	domain_id numeric(7,0),
-	fiocruzid numeric(20,0),
+	domainannotationid numeric(20,0),
 	position varchar(15),
 	sou_name varchar(20),
 	sou_version varchar(10),
 	/*position varchar(15),*/
 	score numeric(5,0),
 
-	CONSTRAINT PK_domainannotation PRIMARY KEY (domain_id, fiocruzid, position),
+	CONSTRAINT PK_domainannotation PRIMARY KEY (domain_id, domainannotationid, position),
 	CONSTRAINT FK_domainannotation FOREIGN KEY (domain_id) REFERENCES domain(domain_id)
 );
 
@@ -192,11 +192,11 @@ DROP TABLE IF EXISTS enzymeannotation CASCADE;
 CREATE TABLE enzymeannotation
 (
 	ec_id varchar(10),
-	fiocruzid numeric(20,0),
+	enzymeannotationid numeric(20,0),
 	sou_name varchar(20),
 	sou_version varchar(10),
 
-	CONSTRAINT PK_enzymeannotation PRIMARY KEY (ec_id, fiocruzid)
+	CONSTRAINT PK_enzymeannotation PRIMARY KEY (ec_id, enzymeannotationid)
 );
 
 
@@ -213,8 +213,8 @@ DROP TABLE IF EXISTS hits_oo CASCADE;
 
 CREATE TABLE hits_oo
 (
-	query_fiocruzid numeric(20,0),
-	subject_fiocruzid numeric(20,0),
+	query_orftid numeric(20,0),
+	subject_orftid numeric(20,0),
 	sw_score numeric(5,0),
 	bit_score numeric(8,0),
 	e_value numeric(8,0),
@@ -227,10 +227,10 @@ CREATE TABLE hits_oo
 	query_gaps numeric(4,0),
 	subject_gaps numeric(4,0),
 
-	FOREIGN KEY (query_fiocruzid) REFERENCES orf_t(fiocruzid),
-	FOREIGN KEY (subject_fiocruzid) REFERENCES orf_t(fiocruzid),
+	FOREIGN KEY (query_orftid) REFERENCES orf_t(orftid),
+	FOREIGN KEY (subject_orftid) REFERENCES orf_t(orftid),
 
-	CONSTRAINT PK_hits_oo PRIMARY KEY(query_fiocruzid, subject_fiocruzid)
+	CONSTRAINT PK_hits_oo PRIMARY KEY(query_orftid, subject_orftid)
 );
 
 
@@ -242,8 +242,8 @@ DROP TABLE IF EXISTS hits_pp CASCADE;
 
 CREATE TABLE hits_pp
 (
-	query_fiocruzid numeric(20,0),
-	subject_fiocruzid numeric(20,0),
+	query_proteinid numeric(20,0),
+	subject_proteinid numeric(20,0),
 	e_value double precision,
 	sw_score numeric(8,0),
 	bit_score numeric(9,1),
@@ -256,10 +256,10 @@ CREATE TABLE hits_pp
 	query_gaps numeric(7,0),
 	subject_gaps numeric(7,0),
 
-	FOREIGN KEY (query_fiocruzid) REFERENCES protein(fiocruzid),
-	FOREIGN KEY (subject_fiocruzid) REFERENCES protein(fiocruzid),
+	FOREIGN KEY (query_proteinid) REFERENCES protein(proteinid),
+	FOREIGN KEY (subject_proteinid) REFERENCES protein(proteinid),
 
-	CONSTRAINT PK_hits_pp PRIMARY KEY(query_fiocruzid, subject_fiocruzid)
+	CONSTRAINT PK_hits_pp PRIMARY KEY(query_proteinid, subject_proteinid)
 );
 
 
@@ -271,8 +271,8 @@ DROP TABLE IF EXISTS hits_op CASCADE;
 
 CREATE TABLE hits_op
 (
-	query_fiocruzid numeric(20,0),
-	subject_fiocruzid numeric(20,0),
+	query_orftid numeric(20,0),
+	subject_proteinid numeric(20,0),
 	sw_score numeric(5,0),
 	bit_score numeric(8,0),
 	e_value numeric(8,0),
@@ -285,10 +285,10 @@ CREATE TABLE hits_op
 	query_gaps numeric(4,0),
 	subject_gaps numeric(4,0),
 
-	FOREIGN KEY (query_fiocruzid) REFERENCES orf_t(fiocruzid),
-	FOREIGN KEY (subject_fiocruzid) REFERENCES protein(fiocruzid),
+	FOREIGN KEY (query_orftid) REFERENCES orf_t(orftid),
+	FOREIGN KEY (subject_proteinid) REFERENCES protein(proteinid),
 
-	CONSTRAINT PK_hits_op PRIMARY KEY(query_fiocruzid, subject_fiocruzid)
+	CONSTRAINT PK_hits_op PRIMARY KEY(query_orftid, subject_proteinid)
 );
 
 
