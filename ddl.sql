@@ -2,7 +2,6 @@
 	DDL do esquema físico
 */
 
-
 /*
 	Tabelas representando entidades do esquema conceitual
 */
