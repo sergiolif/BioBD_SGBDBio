@@ -263,7 +263,7 @@ LANGUAGE "sql" IMMUTABLE;
 */
 
 CREATE OR REPLACE FUNCTION getTaxonomyIdChildrenSet (INTEGER)
-RETURN SETOF NUMERIC AS
+RETURNS SETOF NUMERIC AS
 $$
 	BEGIN
 		RETURN QUERY select * from gettaxonomyidchildren($1);
@@ -282,11 +282,11 @@ CREATE OR REPLACE FUNCTION getCountGenomeTaxonomy (INTEGER)
 RETURNS BIGINT AS
 $$ 
 SELECT count(*) FROM (
-	 SELECT (gs.gbkid) FROM genomic_sequence gs 
+	 SELECT (gs.gbkid) FROM genomicsequence gs 
 	 WHERE gbkid like 'AC_%' and gs.taxonomy_id IN
 	  (select * from gettaxonomyidchildrenset($1)) 
 	UNION
-	 SELECT (gs.gbkid) FROM genomic_sequence gs 
+	 SELECT (gs.gbkid) FROM genomicsequence gs 
 	 WHERE gbkid like 'NC_%' and gs.taxonomy_id IN
 	  (select * from gettaxonomyidchildrenset($1)) 
 ) as t 
@@ -304,11 +304,11 @@ CREATE OR REPLACE FUNCTION getCountGenomeTaxonomy (INTEGER)
 RETURNS BIGINT AS 
 $$
 SELECT count(*) FROM (
-	 SELECT (gs.gbkid) FROM genomic_sequence gs 
+	 SELECT (gs.gbkid) FROM genomicsequence gs 
 	 WHERE gbkid like 'AC_%' and gs.taxonomy_id IN
 	  (select * from gettaxonomyidchildrenset($1)) 
 UNION
-	 SELECT (gs.gbkid) FROM genomic_sequence gs 
+	 SELECT (gs.gbkid) FROM genomicsequence gs 
 	 WHERE gbkid like 'NC_%' and gs.taxonomy_id IN
 	  (select * from gettaxonomyidchildrenset($1)) 
 ) as t 
