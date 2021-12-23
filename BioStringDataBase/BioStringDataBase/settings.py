@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
+
+ENVIRONMENT = os.getenv('DJANGO_ENVIRONMENT', 'development')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CENSORED
+SECRET_KEY = os.getenv('SECRET_KEY', 'q&r6jb8ay0mnaey#km4*=1#@74#_ygff@@a21y-1uap75#x_%+')
+if ENVIRONMENT == 'production':
+    SECRET_KEY = os.environ['SECRET_KEY']  # raise exception if SECRET_KEY not set in production
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = ENVIRONMENT != 'production'
 
 ALLOWED_HOSTS = []
+if ENVIRONMENT != 'development':
+    ALLOWED_HOSTS = ['biostringdb.biobd.inf.puc-rio.br']
 
 
 # Application definition
@@ -79,11 +86,11 @@ WSGI_APPLICATION = 'BioStringDataBase.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'BioDB',
-        'USER': 'postgres',
-        'PASSWORD': 'biostring@root',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': os.getenv('DBNAME', 'BioDB'),
+        'USER': os.getenv('DBUSER', 'postgres'),
+        'PASSWORD': os.getenv('DBUSER', 'postgres'),
+        'HOST': os.getenv('DBHOST', 'localhost'),
+        'PORT': os.getenv('DBPORT', '5432'),
     }
 }
 
@@ -125,3 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+if ENVIRONMENT == 'development':
+    STATICFILES_DIRS = [
+        Path.joinpath(BASE_DIR, 'static'),
+        '/var/www/static/',
+    ]
+else:
+    STATIC_ROOT = os.environ['STATIC_ROOT']
