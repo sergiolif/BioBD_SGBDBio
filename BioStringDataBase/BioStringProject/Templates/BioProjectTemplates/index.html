@@ -43,9 +43,9 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">O que é</a></li>
-              <li class="scroll-to-section"><a href="#about">Faça sua consulta</a></li>
-              <li class="scroll-to-section"><a href="#services">Confira todas as funções</a></li>
+              <li class="scroll-to-section"><a href="#top" class="active">Brief Summary</a></li>
+              <li class="scroll-to-section"><a href="#about">Query</a></li>
+              <li class="scroll-to-section"><a href="#services">Existing Database Functions</a></li>
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>
@@ -65,10 +65,9 @@
           <div class="row">
             <div class="col-lg-6 align-self-center">
               <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                <h6>Bem-vindo ao Sistema de Banco de Dados de Sequências Biológicas</h6>
+                <h6>Welcome to the Genetic Sequence Database Application</h6>
                 <h2><em><i class="fas fa-dna"></i> BioString<span class="color-db">DB</span></em> </h2>
-                <p>BioStringDB é um banco de dados dedicado à pesquisa de sequênciamentos genéticos com funções
-                  auxiliares para busca e manipulação de dados relacionados.</p>
+                <p>BioStringDB is a database dedicated to the research and usage of genetic sequencing using auxiliary functions to provide information extracted from the related data.</p>
 
                     <!--<button type="submit" class="main-button">Buscar</button>-->
 
@@ -102,20 +101,20 @@
                     <img src="static/assets/images/service-icon-dna-1.png" alt="reporting">
                   </div>
                   <div class="right-text">
-                    <h4>Faça sua consulta</h4>
+                    <h4>Make your Query</h4>
                     <form action="{% url 'index' %}" method="POST">{% csrf_token %}
 						<div>
-                          <input type="name" name="searchfield" id="searchfield" placeholder="{{ searchfield | default:'Consulta' }}" required>
+                          <input type="name" name="searchfield" id="searchfield" placeholder="{{ searchfield | default:'Consult Parameter 1' }}" required>
                         </div>
                         <div>
-                          <input type="name" name="searchfield1" id="searchfield1" placeholder="{{ searchfield1 | default:'Consulta' }}">
+                          <input type="name" name="searchfield1" id="searchfield1" placeholder="{{ searchfield1 | default:'Consult Parameter 2' }}">
                         </div>
                         <div>
-                          <input type="name" name="searchfield2" id="searchfield2" placeholder="{{ searchfield2 | default:'Consulta' }}">
+                          <input type="name" name="searchfield2" id="searchfield2" placeholder="{{ searchfield2 | default:'Consult Parameter 3' }}">
                         </div>
                         <div>
                           <select type="name" name="cbFunction" id="cbFunction">
-                            <option value="">Selecione uma Função</option>
+                            <option value="">Select a Function</option>
                             <option value="isDNA">isDNA</option>
                             <option value="complement">complement</option>
                             <option value="reverse">reverse</option>
@@ -135,7 +134,7 @@
                             <option value="getParalogousGene">getParalogousGene</option>
                           </select>
                         </div>
-                        <button type="submit" id="form-submit" class="main-button ">Consultar</button>
+                        <button type="submit" id="form-submit" class="main-button ">Consult</button>
                     </form>
                   </div>
                 </div>
@@ -143,8 +142,8 @@
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.9s">
                   <div class="right-text">
-                    <h4>Resultado:</h4>
-					<textarea name="result-board" type="text" class="form-control" id="result-board" placeholder="{{ result | default:'Resultado' }}" required="" readonly></textarea>
+                    <h4>Result:</h4>
+					<textarea name="result-board" type="text" class="form-control" id="result-board" placeholder="{{ result | default:'Result' }}" required="" readonly></textarea>
                   </div>
                 </div>
               </div>
@@ -160,7 +159,7 @@
       <div class="row">
 		<div class="col-lg-12 align-self-center wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
           <div class="section-heading">
-            <h2>Tabela com todas as funções:</h2>
+            <h2>Table describing the functions contained in the database and its usages:</h2>
           </div>		
 <div style="overflow-x:auto;">
   <table>
@@ -285,7 +284,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
-          <p>© Copyright 2021 BioStringDB. Todos os direitos reservados. 
+          <p>© Copyright 2021 BioStringDB. All rights reserved. 
           
           </p>
         </div>
