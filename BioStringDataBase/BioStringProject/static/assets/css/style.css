@@ -39,6 +39,10 @@
     color: #029a9a!important;
 }
 
+.left-content {
+    margin-left: 10%;
+}
+
 .main-banner .left-content h6 {
     color: #333;
 }

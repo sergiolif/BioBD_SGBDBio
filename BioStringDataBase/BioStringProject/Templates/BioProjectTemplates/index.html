@@ -21,89 +21,89 @@
     <link rel="stylesheet" href="static/assets/css/animated.css">
     <link rel="stylesheet" href="static/assets/css/owl.css">
     <link rel="stylesheet" href="static/assets/css/style.css">
-	
+
 	<script src="https://kit.fontawesome.com/46fd6c1eb0.js" crossorigin="anonymous"></script>
 
   </head>
 
-<body>
+  <body>
 
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <h4><i class="fas fa-dna"></i>BioString<span>DB</span></h4>
-			  	<!--<img class="logotype" src="assets/images/logo-bio-string-sem-fundo.png" />-->
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Brief Summary</a></li>
-              <li class="scroll-to-section"><a href="#about">Query</a></li>
-              <li class="scroll-to-section"><a href="#services">Existing Database Functions</a></li>
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
-
-  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6 align-self-center">
-              <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                <h6>Welcome to the Genetic Sequence Database Application</h6>
-                <h2><em><i class="fas fa-dna"></i> BioString<span class="color-db">DB</span></em> </h2>
-                <p>BioStringDB is a database dedicated to the research and usage of genetic sequencing using auxiliary functions to provide information extracted from the related data.</p>
-
-                    <!--<button type="submit" class="main-button">Buscar</button>-->
-
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="static/assets/images/banner-right-microscope.png" alt="micro" class="img-micro">
-              </div>
-            </div>
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <!-- ***** Logo Start ***** -->
+              <a href="index.html" class="logo">
+                <h4><i class="fas fa-dna"></i>BioString<span>DB</span></h4>
+            <!--<img class="logotype" src="assets/images/logo-bio-string-sem-fundo.png" />-->
+              </a>
+              <!-- ***** Logo End ***** -->
+              <!-- ***** Menu Start ***** -->
+              <ul class="nav">
+                <li class="scroll-to-section"><a href="#top" class="active">Brief Summary</a></li>
+                <li class="scroll-to-section"><a href="#about">Query</a></li>
+                <li class="scroll-to-section"><a href="#services">Existing Database Functions</a></li>
+              </ul>        
+              <a class='menu-trigger'>
+                  <span>Menu</span>
+              </a>
+              <!-- ***** Menu End ***** -->
+            </nav>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
 
-  <div id="about" class="about-us section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="left-image wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <img src="static/assets/images/about-left-science.png" alt="person graphic">
-          </div>
-        </div>
-        <div class="col-lg-8 align-self-center">
-          <div class="services">
+    <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
             <div class="row">
+              <div class="col-lg-6 align-self-center">
+                <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                  <h6>Welcome to the Genetic Sequence Database Application</h6>
+                  <h2><em><i class="fas fa-dna"></i> BioString<span class="color-db">DB</span></em> </h2>
+                  <p>BioStringDB is a database dedicated to the research and usage of genetic sequencing using auxiliary functions to provide information extracted from the related data.</p>
+
+                      <!--<button type="submit" class="main-button">Buscar</button>-->
+
+                </div>
+              </div>
               <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                  <div class="icon">
-                    <img src="static/assets/images/service-icon-dna-1.png" alt="reporting">
-                  </div>
-                  <div class="right-text">
-                    <h4>Make your Query</h4>
-                    <form action="{% url 'index' %}" method="POST">{% csrf_token %}
-						<div>
+                <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                  <img src="static/assets/images/banner-right-microscope.png" alt="micro" class="img-micro">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="about" class="about-us section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="left-image wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+              <img src="static/assets/images/about-left-science.png" alt="person graphic">
+            </div>
+          </div>
+          <div class="col-lg-8 align-self-center">
+            <div class="services">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="icon">
+                      <img src="static/assets/images/service-icon-dna-1.png" alt="reporting">
+                    </div>
+                    <div class="right-text">
+                      <h4>Make your Query</h4>
+                      <form action="{% url 'index' %}" method="POST">{% csrf_token %}
+                        <div>
                           <input type="name" name="searchfield" id="searchfield" placeholder="{{ searchfield | default:'Consult Parameter 1' }}" required>
                         </div>
                         <div>
@@ -135,15 +135,16 @@
                           </select>
                         </div>
                         <button type="submit" id="form-submit" class="main-button ">Consult</button>
-                    </form>
+                      </form>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.9s">
-                  <div class="right-text">
-                    <h4>Result:</h4>
-					<textarea name="result-board" type="text" class="form-control" id="result-board" placeholder="{{ result | default:'Result' }}" required="" readonly></textarea>
+                <div class="col-lg-6">
+                  <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.9s">
+                    <div class="right-text">
+                      <h4>Result:</h4>
+                      <textarea name="result-board" type="text" class="form-control" id="result-board" placeholder="{{ result | default:'Result' }}" required="" readonly></textarea>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -152,152 +153,150 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="services" class="our-services section">
-    <div class="container">
-      <div class="row">
-		<div class="col-lg-12 align-self-center wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
-          <div class="section-heading">
-            <h2>Table describing the functions contained in the database and its usages:</h2>
-          </div>		
-<div style="overflow-x:auto;">
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Input</th>
-      <th>Output</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <td>isDNA</td>
-      <td>nucleotide sequence [text]</td>
-      <td>boolean</td>
-      <td>verify if sequence is a DNA sequence</td>
-    </tr>
-    <tr>
-      <td>complement</td>
-      <td>nucleotide sequence [text]</td>
-      <td>nucleotide sequence</td>
-      <td>returns the complementary DNA strand</td>
-    </tr>
-    <tr>
-      <td>reverse</td>
-      <td>nucleotide sequence [text]</td>
-      <td>nucleotide sequence</td>
-      <td>returns the reverse DNA strand</td>
-    </tr>
-    <tr>
-      <td>getGCcontent</td>
-      <td>nucleotide sequence [text]</td>
-      <td>amount of GC content</td>
-      <td>returns the amount of GC content of DNA sequence</td>
-    </tr>    
-    <tr>
-      <td>transcript</td>
-      <td>nucleotide sequence (DNA) [text]</td>
-      <td>nucleotide sequence (RNA)</td>
-      <td>returns the messenger RNA sequence</td>
-    </tr>    
-    <tr>
-      <td>translation</td>
-      <td>position [integer], nucleotide sequence (RNA) [text]</td>
-      <td>aminoacid sequence (protein)</td>
-      <td>transforms na RNA sequence into an aminoacid sequence (protein)</td>
-    </tr>    
-    <tr>
-      <td>searchORF</td>
-      <td>position [integer], nucleotide sequence (RNA)[text], length (minimum size of ORF) [integer]</td>
-      <td>sequence Collection - aminoacid sequence (protein)</td>
-      <td>search ORFs in a nucleotide sequence (RNA)</td>
-    </tr>  
-    <tr>
-      <td>getTaxonomyIdChildren</td>
-      <td>taxonomy_id [integer]</td>
-      <td>numeric Collection - taxonomy_id</td>
-      <td>get TaxonomyId children of a specific taxonomyId</td>
-    </tr>   
-    <tr>
-      <td>getTaxonomyIdChildrenSet</td>
-      <td>taxonomy_id [integer]</td>
-      <td>numeric Collection - taxonomy_id</td>
-      <td>get TaxonomyId children of a specific taxonomyId set</td>
-    </tr>  
-    <tr>
-      <td>getCountGenomeTaxonomy</td>
-      <td>taxonomy_id [integer]</td>
-      <td>bigint - amount of gbkid</td>
-      <td>get the amount of gbkid belonging to a specific taxonomyId</td>
-    </tr>
-    <tr>
-      <td>getCountProteinTaxonomy</td>
-      <td>taxonomy_id [integer]</td>
-      <td>bigint - amount of proteinid</td>
-      <td>get the amount of proteinid belonging to a specific taxonomyId</td>
-    </tr>   
-    <tr>
-      <td>getCountHitsProtein</td>
-      <td>taxonomy_id [numeric], evalue [double precision]</td>
-      <td>amount of hits [integer]</td>
-      <td>gets the amount of hits in a protein given an e-value</td>
-    </tr>   
-    <tr>
-      <td>getProteinTaxonomy</td>
-      <td>taxonomy_id [integer]</td>
-      <td>proteinid - numeric collection</td>
-      <td>get the proteinid collection belonging to a specific taxonomyId</td>
-    </tr>   
-    <tr>
-      <td>getSimilarProtein</td>
-      <td>taxonomy_id [integer], taxonomy_id [integer]</td>
-      <td>proteinid - numeric collection</td>
-      <td>get the similar proteinid collection belonging to a specific taxonomyId compared with other organism.</td>
-    </tr>   
-    <tr>
-      <td>getSingleGene</td>
-      <td>taxonomy_id [integer], taxonomy_id [integer]</td>
-      <td>proteinid - numeric collection</td>
-      <td>gets single genes in a taxonomic group</td>
-    </tr>    
-    <tr>
-      <td>getOrthologousGene</td>
-      <td>taxonomy_id [integer], taxonomy_id [integer]</td>
-      <td>proteinid - numeric collection</td>
-      <td>get the orthologous genes to a specific  taxonomyId</td>
-    </tr>  
-    <tr>
-      <td>getParalogousGene</td>
-      <td>taxonomy_id [integer]</td>
-      <td>proteinid - numeric collection</td>
-      <td>get the paralogous genes to a specific taxonomyId</td>
-    </tr>     
-  </table>
-</div>		
-		</div>
-
-
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
-          <p>© Copyright 2021 BioStringDB. All rights reserved. 
-          
-          </p>
+    <div id="services" class="our-services section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 align-self-center wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
+            <div class="section-heading">
+              <h2>Table describing the functions contained in the database and its usages:</h2>
+            </div>		
+            <div style="overflow-x:auto;">
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Input</th>
+                  <th>Output</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>isDNA</td>
+                  <td>nucleotide sequence [text]</td>
+                  <td>boolean</td>
+                  <td>verify if sequence is a DNA sequence</td>
+                </tr>
+                <tr>
+                  <td>complement</td>
+                  <td>nucleotide sequence [text]</td>
+                  <td>nucleotide sequence</td>
+                  <td>returns the complementary DNA strand</td>
+                </tr>
+                <tr>
+                  <td>reverse</td>
+                  <td>nucleotide sequence [text]</td>
+                  <td>nucleotide sequence</td>
+                  <td>returns the reverse DNA strand</td>
+                </tr>
+                <tr>
+                  <td>getGCcontent</td>
+                  <td>nucleotide sequence [text]</td>
+                  <td>amount of GC content</td>
+                  <td>returns the amount of GC content of DNA sequence</td>
+                </tr>
+                <tr>
+                  <td>transcript</td>
+                  <td>nucleotide sequence (DNA) [text]</td>
+                  <td>nucleotide sequence (RNA)</td>
+                  <td>returns the messenger RNA sequence</td>
+                </tr>
+                <tr>
+                  <td>translation</td>
+                  <td>position [integer], nucleotide sequence (RNA) [text]</td>
+                  <td>aminoacid sequence (protein)</td>
+                  <td>transforms na RNA sequence into an aminoacid sequence (protein)</td>
+                </tr>
+                <tr>
+                  <td>searchORF</td>
+                  <td>position [integer], nucleotide sequence (RNA)[text], length (minimum size of ORF) [integer]</td>
+                  <td>sequence Collection - aminoacid sequence (protein)</td>
+                  <td>search ORFs in a nucleotide sequence (RNA)</td>
+                </tr>
+                <tr>
+                  <td>getTaxonomyIdChildren</td>
+                  <td>taxonomy_id [integer]</td>
+                  <td>numeric Collection - taxonomy_id</td>
+                  <td>get TaxonomyId children of a specific taxonomyId</td>
+                </tr>
+                <tr>
+                  <td>getTaxonomyIdChildrenSet</td>
+                  <td>taxonomy_id [integer]</td>
+                  <td>numeric Collection - taxonomy_id</td>
+                  <td>get TaxonomyId children of a specific taxonomyId set</td>
+                </tr>
+                <tr>
+                  <td>getCountGenomeTaxonomy</td>
+                  <td>taxonomy_id [integer]</td>
+                  <td>bigint - amount of gbkid</td>
+                  <td>get the amount of gbkid belonging to a specific taxonomyId</td>
+                </tr>
+                <tr>
+                  <td>getCountProteinTaxonomy</td>
+                  <td>taxonomy_id [integer]</td>
+                  <td>bigint - amount of proteinid</td>
+                  <td>get the amount of proteinid belonging to a specific taxonomyId</td>
+                </tr>
+                <tr>
+                  <td>getCountHitsProtein</td>
+                  <td>taxonomy_id [numeric], evalue [double precision]</td>
+                  <td>amount of hits [integer]</td>
+                  <td>gets the amount of hits in a protein given an e-value</td>
+                </tr>
+                <tr>
+                  <td>getProteinTaxonomy</td>
+                  <td>taxonomy_id [integer]</td>
+                  <td>proteinid - numeric collection</td>
+                  <td>get the proteinid collection belonging to a specific taxonomyId</td>
+                </tr>
+                <tr>
+                  <td>getSimilarProtein</td>
+                  <td>taxonomy_id [integer], taxonomy_id [integer]</td>
+                  <td>proteinid - numeric collection</td>
+                  <td>get the similar proteinid collection belonging to a specific taxonomyId compared with other organism.</td>
+                </tr>
+                <tr>
+                  <td>getSingleGene</td>
+                  <td>taxonomy_id [integer], taxonomy_id [integer]</td>
+                  <td>proteinid - numeric collection</td>
+                  <td>gets single genes in a taxonomic group</td>
+                </tr>
+                <tr>
+                  <td>getOrthologousGene</td>
+                  <td>taxonomy_id [integer], taxonomy_id [integer]</td>
+                  <td>proteinid - numeric collection</td>
+                  <td>get the orthologous genes to a specific  taxonomyId</td>
+                </tr>
+                <tr>
+                  <td>getParalogousGene</td>
+                  <td>taxonomy_id [integer]</td>
+                  <td>proteinid - numeric collection</td>
+                  <td>get the paralogous genes to a specific taxonomyId</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </footer>
-  <!-- Scripts -->
-  <script src="static/vendor/jquery/jquery.min.js"></script>
-  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="static/assets/js/owl-carousel.js"></script>
-  <script src="static/assets/js/animation.js"></script>
-  <script src="static/assets/js/imagesloaded.js"></script>
-  <script src="static/assets/js/templatemo-custom.js"></script>
 
-</body>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+            <p>© Copyright 2021 BioStringDB. All rights reserved. 
+            
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/assets/js/owl-carousel.js"></script>
+    <script src="static/assets/js/animation.js"></script>
+    <script src="static/assets/js/imagesloaded.js"></script>
+    <script src="static/assets/js/templatemo-custom.js"></script>
+
+  </body>
 </html>
